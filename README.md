@@ -11,7 +11,7 @@ To reference this library, add following to the `platformio.ini` file as follows
 ```ini
 [env]
 lib_deps =
-    https://github.com/mdvorak-iot/esp-double-reset.git#v1.1.0
+    https://github.com/mdvorak-iot/esp-double-reset.git#v1.0.0
 ```
 
 ```c
