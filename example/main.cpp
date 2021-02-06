@@ -35,7 +35,7 @@ void setup()
 
 void loop()
 {
-	vTaskDelay(1);
+	vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
 
 extern "C" void app_main()
