@@ -1,0 +1,10 @@
+.pio
+.vscode/
+.idea/
+*.iml
+/CMakeLists.txt
+/CMakeListsPrivate.txt
+/cmake-build-*/
+.vscode/settings.json
+sdkconfig
+CMakeLists*
