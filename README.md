@@ -1,5 +1,3 @@
-TODO fix
-
 # esp-double-reset
 
 ![platformio build](https://github.com/mdvorak-iot/esp-double-reset/workflows/platformio%20build/badge.svg)
