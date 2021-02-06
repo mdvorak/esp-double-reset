@@ -4,6 +4,13 @@
 
 Detect double reset, which can be used to place program in special reconfiguration mode, like entering WiFi credentials.
 
+<table>
+	<tr><th>Platform</th><td>ESP-IDF</td></tr>
+	<tr><th>Toolchain</th><td>platformio</td></tr>
+	<tr><th>Storage</th><td>NVS</td></tr>
+	<tr><th>Dependencies</th><td>None</td></tr>
+</table>
+
 ## Usage
 
 To reference this library, add following to the `platformio.ini` file as follows (replace with desired version):
@@ -43,4 +50,4 @@ void app_main()
 }
 ```
 
-For code example, see [example/main.cpp](example/main.cpp)
+For working example, see [example/main.cpp](example/main.cpp)
