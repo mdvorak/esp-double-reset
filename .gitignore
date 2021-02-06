@@ -7,4 +7,5 @@
 /cmake-build-*/
 .vscode/settings.json
 sdkconfig
+sdkconfig.old
 CMakeLists*
