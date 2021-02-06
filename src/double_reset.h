@@ -1,5 +1,5 @@
-#ifndef AUTO_WPS_H
-#define AUTO_WPS_H
+#ifndef DOUBLE_RESET_H
+#define DOUBLE_RESET_H
 
 #include <esp_err.h>
 #include <stdbool.h>
