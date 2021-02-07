@@ -27,7 +27,7 @@ void setup()
 
 	// Detect double-reset
 	bool reconfigure = false;
-	ESP_ERROR_CHECK(double_reset_start(&reconfigure, DOUBLE_RESET_TIMEOUT_DEFAULT));
+	ESP_ERROR_CHECK(double_reset_start(&reconfigure, DOUBLE_RESET_DEFAULT_TIMEOUT));
 
 	// Status LED
 	gpio_reset_pin(STATUS_LED_GPIO);
