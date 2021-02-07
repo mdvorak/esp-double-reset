@@ -171,7 +171,7 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
 
 bool double_reset_pending()
 {
-    return (xEventGroupGetBits(double_reset_group) & BIT0) != 0;
+    return (xEventGroupGetBits(double_reset_group) & BIT0) == 0;
 }
 
 void double_reset_wait()
