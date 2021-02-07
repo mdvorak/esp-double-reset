@@ -8,8 +8,13 @@
 extern "C"
 {
 #endif
+    const uint32_t DOUBLE_RESET_TIMEOUT_DEFAULT = 5000;
 
-    esp_err_t double_reset_start(bool *result, uint32_t timeout);
+    esp_err_t double_reset_start(bool *result, uint32_t timeout_ms);
+
+    bool double_reset_pending();
+
+    void double_reset_wait();
 
 #ifdef __cplusplus
 }
