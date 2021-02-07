@@ -30,9 +30,9 @@ void setup()
 	ESP_ERROR_CHECK(double_reset_start(&reconfigure, DOUBLE_RESET_DEFAULT_TIMEOUT));
 
 	// Status LED
-	gpio_reset_pin(STATUS_LED_GPIO);
-	gpio_set_direction(STATUS_LED_GPIO, GPIO_MODE_OUTPUT);
-	gpio_set_level(STATUS_LED_GPIO, STATUS_LED_ON);
+	ESP_ERROR_CHECK_WITHOUT_ABORT(gpio_reset_pin(STATUS_LED_GPIO));
+	ESP_ERROR_CHECK_WITHOUT_ABORT(gpio_set_direction(STATUS_LED_GPIO, GPIO_MODE_OUTPUT));
+	ESP_ERROR_CHECK_WITHOUT_ABORT(gpio_set_level(STATUS_LED_GPIO, STATUS_LED_ON));
 
 	// Reconfigure logic
 	if (reconfigure)
@@ -43,17 +43,12 @@ void setup()
 		bool status_led = true;
 		TickType_t started = xTaskGetTickCount();
 
-		for (;;)
+		// NOTE since double reset, due to its imperfect implementation, can be triggered randomly, special mode should always
+		// drop to normal mode after some timeout
+		while ((xTaskGetTickCount() - started) < 60000 / portTICK_PERIOD_MS)
 		{
 			gpio_set_level(STATUS_LED_GPIO, (status_led = !status_led) ? STATUS_LED_ON : STATUS_LED_OFF);
 			vTaskDelay(50 / portTICK_PERIOD_MS);
-
-			// NOTE since double reset, due to its imperfect implementation, can be triggered randomly, special mode should always
-			// drop to normal mode after some timeout
-			if ((xTaskGetTickCount() - started) > 60000 / portTICK_PERIOD_MS)
-			{
-				break;
-			}
 		}
 	}
 
