@@ -1,0 +1,2 @@
+# Disable colored terminal
+CONFIG_LOG_COLORS=n
