@@ -1,9 +1,9 @@
-#include <esp_netif.h>
-#include <esp_wifi.h>
 #include <esp_log.h>
 #include <nvs_flash.h>
-#include <double_reset.h>
 #include <driver/gpio.h>
+#include <freertos/FreeRTOS.h>
+#include <freertos/task.h>
+#include <double_reset.h>
 
 static const char TAG[] = "example";
 
@@ -13,7 +13,6 @@ static const uint8_t STATUS_LED_OFF = (~STATUS_LED_ON) & 1;
 
 void setup()
 {
-	esp_log_level_set("wifi", ESP_LOG_WARN);
 	esp_log_level_set("double_reset", ESP_LOG_DEBUG);
 
 	// Initialize NVS
