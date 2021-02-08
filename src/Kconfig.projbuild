@@ -1,7 +1,0 @@
-menu "Double reset"
-    config DOUBLE_RESET_DEFAULT_TIMEOUT
-        int "Default double reset detecion timeout"
-        default 3000
-        help
-            Timeout, in milliseconds.
-endmenu

@@ -14,5 +14,7 @@
         }
     ],
     "frameworks": "espidf",
-    "platforms": "espressif32"
+    "platforms": "espressif32",
+    "includeDir": "src",
+    "srcDir": "src"
 }
