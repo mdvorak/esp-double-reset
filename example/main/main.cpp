@@ -7,8 +7,8 @@
 
 static const char TAG[] = "example";
 
-static const auto STATUS_LED_GPIO = GPIO_NUM_22;
-static const uint8_t STATUS_LED_ON = 0;
+static const gpio_num_t STATUS_LED_GPIO = (gpio_num_t)CONFIG_STATUS_LED_GPIO;
+static const uint32_t STATUS_LED_ON = CONFIG_STATUS_LED_ON;
 static const uint8_t STATUS_LED_OFF = (~STATUS_LED_ON) & 1;
 
 void setup()

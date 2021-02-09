@@ -1,0 +1,13 @@
+menu "Application config"
+    config STATUS_LED_GPIO
+        int "Status LED GPIO"
+        default 22
+        help
+            GPIO PIN status LED is connected to.
+
+    config STATUS_LED_ON
+        int "Status LED ON logic level"
+        default 0
+        help
+            GPIO logic leven, when status LED is powerd on - 1 when HIGH corresponds to an ON state, 0 when LOW corresponds to an ON state.
+endmenu
