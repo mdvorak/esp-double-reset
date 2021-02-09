@@ -60,9 +60,7 @@ void app_main()
 }
 ```
 
-For working example, see [example/main.cpp](example/main.cpp)
-
-To build it, run
+For working example, see [example/main.cpp](example/main.cpp). To build it, run
 
 ```bash
 platformio run -d example/
