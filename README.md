@@ -29,6 +29,8 @@ your own, or set `DOUBLE_RESET_DEFAULT_TIMEOUT` manually, via
 build_flags = -D DOUBLE_RESET_DEFAULT_TIMEOUT=3000
 ```
 
+### Example
+
 ```c
 #include <double_reset.h>
 
@@ -59,3 +61,9 @@ void app_main()
 ```
 
 For working example, see [example/main.cpp](example/main.cpp)
+
+To build it, run
+
+```bash
+platformio run -d example/
+```
