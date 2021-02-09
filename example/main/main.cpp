@@ -11,7 +11,7 @@ static const gpio_num_t STATUS_LED_GPIO = (gpio_num_t)CONFIG_STATUS_LED_GPIO;
 static const uint32_t STATUS_LED_ON = CONFIG_STATUS_LED_ON;
 static const uint8_t STATUS_LED_OFF = (~STATUS_LED_ON) & 1;
 
-void setup()
+static void setup()
 {
 	esp_log_level_set("double_reset", ESP_LOG_DEBUG);
 
@@ -60,16 +60,12 @@ void setup()
 	ESP_LOGI(TAG, "started");
 }
 
-void loop()
+static void run()
 {
-	vTaskDelay(1000 / portTICK_PERIOD_MS);
 }
 
-extern "C" _Noreturn void app_main()
+extern "C" void app_main()
 {
 	setup();
-	for (;;)
-	{
-		loop();
-	}
+	run();
 }
