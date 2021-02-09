@@ -13,12 +13,20 @@ Detect double reset, which can be used to place program in special reconfigurati
 
 ## Usage
 
-To reference this library, add following to the `platformio.ini` file as follows (replace with desired version):
+You can either use this as standard git submodule, or reference it via `platformio.ini`:
 
 ```ini
 [env]
 lib_deps =
     https://github.com/mdvorak-iot/esp-double-reset.git#v1.0.0
+```
+
+Note that when used as platformio library, `Kconfig` is not available. Either add [Kconfig](./Kconfig) contents to 
+your own, or set `DOUBLE_RESET_DEFAULT_TIMEOUT` manually, via
+
+```ini
+[env]
+build_flags = -D DOUBLE_RESET_DEFAULT_TIMEOUT=3000
 ```
 
 ```c

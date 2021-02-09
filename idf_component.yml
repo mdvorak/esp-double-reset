@@ -1,5 +1,8 @@
 name: "esp-double-reset"
-
-version: "0.0.0"
-
 description: Double reset detection.
+url: https://github.com/mdvorak-iot/esp-double-reset.git
+targets:
+  - esp32
+dependencies:
+  idf:
+    version: ">=4.1"
