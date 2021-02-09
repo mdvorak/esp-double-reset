@@ -4,16 +4,14 @@
 #include <esp_err.h>
 #include <stdbool.h>
 
+#ifndef DOUBLE_RESET_DEFAULT_TIMEOUT
+#define DOUBLE_RESET_DEFAULT_TIMEOUT = CONFIG_DOUBLE_RESET_DEFAULT_TIMEOUT;
+#endif
+
 #ifdef __cplusplus
 extern "C"
 {
 #endif
-
-#ifndef CONFIG_DOUBLE_RESET_DEFAULT_TIMEOUT
-#define CONFIG_DOUBLE_RESET_DEFAULT_TIMEOUT 3000
-#endif
-
-    const uint32_t DOUBLE_RESET_DEFAULT_TIMEOUT = CONFIG_DOUBLE_RESET_DEFAULT_TIMEOUT;
 
     esp_err_t double_reset_start(bool *result, uint32_t timeout_ms);
 
