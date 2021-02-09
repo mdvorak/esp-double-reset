@@ -22,7 +22,7 @@ lib_deps =
 ```
 
 Note that when used as platformio library, `Kconfig` is not available. Either add [Kconfig](./Kconfig) contents to 
-your own, or set `DOUBLE_RESET_DEFAULT_TIMEOUT` manually, via
+your `Kconfig.projbuild`, or set `DOUBLE_RESET_DEFAULT_TIMEOUT` manually, via
 
 ```ini
 [env]
