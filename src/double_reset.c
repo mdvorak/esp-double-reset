@@ -164,7 +164,7 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
         ESP_LOGI(TAG, "double reset flag set, waiting for %d ms", timeout_ms);
 
         // Create background task, that resets the status
-        BaseType_t ret = xTaskCreate(double_reset_task, "double_reset", 4096, NULL, tskIDLE_PRIORITY + 1, NULL);
+        BaseType_t ret = xTaskCreate(double_reset_task, "double_reset", 2048, NULL, tskIDLE_PRIORITY + 1, NULL);
         return ret == pdPASS ? ESP_OK : ESP_FAIL;
     }
 }
