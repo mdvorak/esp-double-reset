@@ -40,19 +40,18 @@ static void setup()
 
         // Custom mode of operation
         bool status_led = true;
-        TickType_t started = xTaskGetTickCount();
+        const TickType_t started = xTaskGetTickCount();
 
         // NOTE since double reset, due to its imperfect implementation, can be triggered randomly, special mode should always
         // drop to normal mode after some timeout
-        while ((xTaskGetTickCount() - started) < 60000 / portTICK_PERIOD_MS)
+        while (xTaskGetTickCount() - started < 60000 / portTICK_PERIOD_MS)
         {
             gpio_set_level(STATUS_LED_GPIO, (status_led = !status_led) ? STATUS_LED_ON : STATUS_LED_OFF);
             vTaskDelay(50 / portTICK_PERIOD_MS);
         }
     }
 
-    // Wait for reset
-    // NOTE this is trivial implementation, delaying startup, just to turn of status led, you might want more sophisticated logic
+    // Wait for reset - usually not needed
     double_reset_wait();
     gpio_set_level(STATUS_LED_GPIO, STATUS_LED_OFF);
 
