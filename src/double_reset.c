@@ -35,7 +35,7 @@ static esp_err_t double_reset_clear_state(nvs_handle_t handle)
     return ESP_OK;
 }
 
-static void double_reset_task(void *p)
+static void double_reset_task(__unused void *p)
 {
     ESP_LOGD(TAG, "double reset task started");
 
@@ -95,7 +95,7 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
     if (reset_reason == ESP_RST_POWERON || reset_reason == ESP_RST_EXT)
     {
         // Get last state
-        err = nvs_get_u8(handle, KEY, &val); // Ignore error
+        nvs_get_u8(handle, KEY, &val); // Ignore error
 
         if (val != 0)
         {
