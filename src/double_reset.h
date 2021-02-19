@@ -9,15 +9,14 @@
 #endif
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-    esp_err_t double_reset_start(bool *result, uint32_t timeout_ms);
+esp_err_t double_reset_start(bool *result, uint32_t timeout_ms);
 
-    bool double_reset_pending();
+bool double_reset_pending();
 
-    void double_reset_wait();
+void double_reset_wait();
 
 #ifdef __cplusplus
 }

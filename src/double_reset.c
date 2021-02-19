@@ -1,9 +1,9 @@
 #include "double_reset.h"
 #include <esp_log.h>
-#include <nvs.h>
 #include <freertos/FreeRTOS.h>
-#include <freertos/task.h>
 #include <freertos/event_groups.h>
+#include <freertos/task.h>
+#include <nvs.h>
 
 static const char TAG[] = "double_reset";
 static const char KEY[] = "state";
