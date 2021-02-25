@@ -2,13 +2,12 @@
 #include <esp_log.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/event_groups.h>
-#include <freertos/task.h>
 #include <nvs.h>
 
 static const char TAG[] = "double_reset";
 static const char KEY[] = "state";
 
-static volatile uint32_t double_reset_timeout = 5000;
+static uint32_t double_reset_timeout = 5000;
 static EventGroupHandle_t double_reset_group;
 
 static esp_err_t double_reset_clear_state(nvs_handle_t handle)
