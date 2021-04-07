@@ -99,7 +99,7 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
         if (val != 0)
         {
             // Positive, store result and reset state
-            ESP_LOGI(TAG, "double reset detected");
+            ESP_LOGW(TAG, "double reset detected");
             *result = true;
             reset_state = true;
         }
