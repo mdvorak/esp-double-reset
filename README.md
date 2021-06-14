@@ -6,7 +6,7 @@ Detect double reset, which can be used to place program in special reconfigurati
 
 <table>
 	<tr><th>Platform</th><td>ESP-IDF</td></tr>
-	<tr><th>Toolchain</th><td>platformio</td></tr>
+	<tr><th>Toolchain</th><td>idf / platformio</td></tr>
 	<tr><th>Storage</th><td>NVS</td></tr>
 	<tr><th>Dependencies</th><td>None</td></tr>
 </table>
