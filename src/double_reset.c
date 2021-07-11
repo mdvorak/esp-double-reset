@@ -21,7 +21,7 @@ static esp_err_t double_reset_clear_state(nvs_handle_t handle)
         return ESP_OK;
     }
 
-    // Reset, commit and close
+    // Reset and commit
     esp_err_t err = nvs_erase_all(handle);
     if (err != ESP_OK)
         return err;
@@ -30,7 +30,30 @@ static esp_err_t double_reset_clear_state(nvs_handle_t handle)
     if (err != ESP_OK)
         return err;
 
-    ESP_LOGI(TAG, "double reset flag cleared");
+    return ESP_OK;
+}
+
+static esp_err_t double_reset_set_state(nvs_handle_t handle)
+{
+    uint8_t val = 0;
+    nvs_get_u8(handle, KEY, &val); // Ignore error
+
+    // No-op
+    if (val == 1)
+    {
+        return ESP_OK;
+    }
+
+    // Set
+    esp_err_t err = nvs_set_u8(handle, KEY, 1);
+    if (err != ESP_OK)
+        return err;
+
+    // Commit
+    err = nvs_commit(handle);
+    if (err != ESP_OK)
+        return err;
+
     return ESP_OK;
 }
 
@@ -56,6 +79,10 @@ static void double_reset_task(__unused void *p)
     {
         ESP_LOGE(TAG, "failed to erase nvs in the task: %d %s", err, esp_err_to_name(err));
         goto finalize;
+    }
+    else
+    {
+        ESP_LOGI(TAG, "double reset flag cleared");
     }
 
 finalize:
@@ -130,6 +157,10 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
             xEventGroupSetBits(double_reset_group, BIT0);
             return err;
         }
+        else
+        {
+            ESP_LOGI(TAG, "double reset flag cleared");
+        }
 
         // Done
         nvs_close(handle);
@@ -139,15 +170,7 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
     else
     {
         // Store flag
-        err = nvs_set_u8(handle, KEY, 1);
-        if (err != ESP_OK)
-        {
-            nvs_close(handle);
-            xEventGroupSetBits(double_reset_group, BIT0);
-            return err;
-        }
-
-        err = nvs_commit(handle);
+        err = double_reset_set_state(handle);
         if (err != ESP_OK)
         {
             nvs_close(handle);
@@ -166,6 +189,28 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
         BaseType_t ret = xTaskCreate(double_reset_task, "double_reset", 2048, NULL, tskIDLE_PRIORITY + 1, NULL);
         return ret == pdPASS ? ESP_OK : ESP_FAIL;
     }
+}
+
+esp_err_t double_reset_set(bool state)
+{
+    nvs_handle_t handle = 0;
+    esp_err_t err = nvs_open(TAG, NVS_READWRITE, &handle);
+    if (err != ESP_OK)
+    {
+        return err;
+    }
+
+    if (state)
+    {
+        err = double_reset_set_state(handle);
+    }
+    else
+    {
+        err = double_reset_clear_state(handle);
+    }
+
+    nvs_close(handle);
+    return err;
 }
 
 bool double_reset_pending()
