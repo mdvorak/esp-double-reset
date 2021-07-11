@@ -10,6 +10,13 @@ static const char KEY[] = "state";
 static uint32_t double_reset_timeout = 5000;
 static EventGroupHandle_t double_reset_group;
 
+static bool double_reset_get_state(nvs_handle_t handle)
+{
+    uint8_t val = 0;
+    nvs_get_u8(handle, KEY, &val); // Ignore error
+    return val;
+}
+
 static esp_err_t double_reset_clear_state(nvs_handle_t handle)
 {
     uint8_t val = 0;
@@ -111,8 +118,6 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
         return err;
     }
 
-    uint8_t val = 0;
-
     // Detect reset only when reset button is pressed
     // NOTE there is no way to distinguish between first power-on and reset, unless you would use actual RTC
     esp_reset_reason_t reset_reason = esp_reset_reason();
@@ -121,9 +126,7 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
     if (reset_reason == ESP_RST_POWERON || reset_reason == ESP_RST_EXT)
     {
         // Get last state
-        nvs_get_u8(handle, KEY, &val); // Ignore error
-
-        if (val != 0)
+        if (double_reset_get_state(handle))
         {
             // Positive, store result and reset state
             ESP_LOGW(TAG, "double reset detected");
