@@ -18,7 +18,7 @@ You can either use this as standard git submodule, or reference it via `platform
 ```ini
 [env]
 lib_deps =
-    https://github.com/mdvorak-iot/esp-double-reset.git#v1.0.0
+    https://github.com/mdvorak-iot/esp-double-reset.git#v1.0.1
 ```
 
 Note that when used as platformio library, `Kconfig` is not available. Either add [Kconfig](./Kconfig) contents to 
