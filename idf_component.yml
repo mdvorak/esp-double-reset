@@ -1,6 +1,6 @@
 name: "double_reset"
 description: Detect double reset, which can be used to place program in special reconfiguration mode, like entering Wi-Fi credentials.
-url: https://github.com/mdvorak-iot/esp-double-reset.git
+url: https://github.com/mdvorak/esp-double-reset.git
 dependencies:
   idf:
     version: ">=4.1"

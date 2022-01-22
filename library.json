@@ -4,7 +4,7 @@
     "keywords": "esp esp32 reset",
     "repository": {
         "type": "git",
-        "url": "https://github.com/mdvorak-iot/esp-double-reset.git"
+        "url": "https://github.com/mdvorak/esp-double-reset.git"
     },
     "authors": [
         {
