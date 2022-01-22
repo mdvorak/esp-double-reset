@@ -17,7 +17,7 @@ or use it as platformio library
 ```ini
 [env]
 lib_deps =
-    https://github.com/mdvorak/esp-double-reset.git#v1.0.1
+    https://github.com/mdvorak/esp-double-reset.git#v1.0.2
 ```
 
 Note that when used as platformio library, `Kconfig` is not available. Either add [Kconfig](./Kconfig) contents to 
