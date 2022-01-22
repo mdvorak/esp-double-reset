@@ -3,6 +3,7 @@
 
 #include <esp_err.h>
 #include <stdbool.h>
+#include "sdkconfig.h"
 
 #ifndef DOUBLE_RESET_DEFAULT_TIMEOUT
 #define DOUBLE_RESET_DEFAULT_TIMEOUT CONFIG_DOUBLE_RESET_DEFAULT_TIMEOUT

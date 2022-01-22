@@ -1,19 +1,18 @@
-# esp-double-reset
+# double_reset
 
-![platformio build](https://github.com/mdvorak-iot/esp-double-reset/workflows/platformio%20build/badge.svg)
+[![build](https://github.com/mdvorak-iot/esp-double-reset/actions/workflows/build.yml/badge.svg)](https://github.com/mdvorak-iot/esp-double-reset/actions/workflows/build.yml)
 
-Detect double reset, which can be used to place program in special reconfiguration mode, like entering WiFi credentials.
-
-<table>
-	<tr><th>Platform</th><td>ESP-IDF</td></tr>
-	<tr><th>Toolchain</th><td>idf / platformio</td></tr>
-	<tr><th>Storage</th><td>NVS</td></tr>
-	<tr><th>Dependencies</th><td>None</td></tr>
-</table>
+Detect double reset, which can be used to place program in special reconfiguration mode, like entering Wi-Fi credentials.
 
 ## Usage
 
-You can either use this as standard git submodule, or reference it via `platformio.ini`:
+To reference this library by your project, add it as git submodule, using command
+
+```shell
+git submodule add https://github.com/mdvorak-iot/esp-double-reset.git components/double_reset
+```
+
+or use it as platformio library
 
 ```ini
 [env]
@@ -60,8 +59,25 @@ void app_main()
 }
 ```
 
-For working example, see [example/main.cpp](example/main.cpp). To build it, run
+For working example, see [example/main.cpp](example/main.cpp).
 
-```bash
-platformio run -d example/
+## Development
+
+Prepare [ESP-IDF development environment](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/index.html#get-started-get-prerequisites)
+.
+
+Configure example application with
+
 ```
+cd example/
+idf.py menuconfig
+```
+
+Flash it via (in the example dir)
+
+```
+idf.py build flash monitor
+```
+
+As an alternative, you can use [PlatformIO](https://docs.platformio.org/en/latest/core/installation.html) to build and
+flash the example project.
