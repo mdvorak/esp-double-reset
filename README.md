@@ -1,6 +1,6 @@
 # double_reset
 
-[![build](https://github.com/mdvorak/esp-double-reset/actions/workflows/build.yml/badge.svg)](https://github.com/mdvorak/esp-double-reset/actions/workflows/build.yml)
+[![test](https://github.com/mdvorak/esp-double-reset/actions/workflows/test.yml/badge.svg)](https://github.com/mdvorak/esp-double-reset/actions/workflows/test.yml)
 
 Detect double reset, which can be used to place program in special reconfiguration mode, like entering Wi-Fi credentials.
 
