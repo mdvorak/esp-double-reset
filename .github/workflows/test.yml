@@ -1,4 +1,4 @@
-name: build
+name: test
 
 on:
   push:
@@ -7,7 +7,12 @@ on:
     paths-ignore: [ "*.md" ]
   pull_request:
     branches: [ "main" ]
-    paths-ignore: [ "*.md" ]
+
+permissions:
+  contents: read
+
+env:
+  IDF_COMPONENT_MANAGER: "1"
 
 jobs:
   build:
@@ -33,7 +38,12 @@ jobs:
           - { idf_target: esp32h2, idf_ver: v4.4 }
     container: espressif/idf:release-${{ matrix.idf_ver }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+
+      - name: Setup Component Manager
+        run: |
+          . ${IDF_PATH}/export.sh
+          pip install --upgrade idf-component-manager
 
       - name: Build
         env:
@@ -46,10 +56,10 @@ jobs:
   platformio:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Setup Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v3
         with:
           python-version: 3.9
 
@@ -57,6 +67,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install --upgrade platformio
+
+      - name: Setup Component Manager
+        run: |
+          pip install --upgrade idf-component-manager
 
       - name: Build
         run: platformio run -d example
