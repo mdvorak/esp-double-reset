@@ -2,6 +2,7 @@
 #include <esp_log.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/event_groups.h>
+#include <inttypes.h>
 #include <nvs.h>
 
 static const char TAG[] = "double_reset";
@@ -186,7 +187,7 @@ esp_err_t double_reset_start(bool *result, uint32_t timeout_ms)
 
         // Store timeout
         double_reset_timeout = timeout_ms;
-        ESP_LOGI(TAG, "double reset flag set, waiting for %d ms", timeout_ms);
+        ESP_LOGI(TAG, "double reset flag set, waiting for %" PRIu32 " ms", timeout_ms);
 
         // Create background task, that resets the status
         BaseType_t ret = xTaskCreate(double_reset_task, "double_reset", 2048, NULL, tskIDLE_PRIORITY + 1, NULL);
