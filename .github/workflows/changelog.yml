@@ -1,0 +1,42 @@
+name: Changelog Generator
+on:
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - 'package.json'
+      - 'CHANGELOG.md'
+  workflow_dispatch:
+
+jobs:
+    conventional-changelog:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repo
+            uses: actions/checkout@v3
+            with:
+              token: ${{ secrets.GITHUB_TOKEN  }}
+              submodules: 'recursive'
+              ssh-key: ${{ secrets.SSH_KEY }}
+          - name: Install conventional commit dependencies
+            id: install-cc-dependencies
+            run: npm i conventional-changelog-conventionalcommits
+          - name: Conventional Changelog Action
+            id: changelog
+            uses: TriPSs/conventional-changelog-action@v3
+            with:
+              github-token: ${{ secrets.GITHUB_TOKEN  }}
+              output-file: "CHANGELOG.md"  
+              skip-commit: "false"
+              skip-on-empty: "true"
+              config-file-path: "./.github/actions/config.js"
+              release-count: 0
+          - name: Release
+            id: create_release
+            uses: ncipollo/release-action@v1
+            if: ${{ steps.changelog.outputs.skipped == 'false' }}
+            with:
+              token: ${{ secrets.GITHUB_TOKEN }}
+              name: ${{ steps.changelog.outputs.tag }}
+              body: ${{ steps.changelog.outputs.clean_changelog }}
+              tag: ${{ steps.changelog.outputs.tag }}
