@@ -1,0 +1,6 @@
+{
+  "version": "1.0.2",
+  "dependencies": {
+    "conventional-changelog-conventionalcommits": "^6.1.0"
+  }
+}
