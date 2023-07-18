@@ -1,6 +1,7 @@
 # double_reset
+[![test](https://github.com/NightSky_SK/esp-double-reset/actions/workflows/test.yml/badge.svg)](https://github.com/NightSky_SK/esp-double-reset/actions/workflows/test.yml)
 
-[![test](https://github.com/mdvorak/esp-double-reset/actions/workflows/test.yml/badge.svg)](https://github.com/mdvorak/esp-double-reset/actions/workflows/test.yml)
+## This repo is forked from [mdvorak/esp-double-reset/](https://github.com/mdvorak/esp-double-reset/)
 
 Detect double reset, which can be used to place program in special reconfiguration mode, like entering Wi-Fi credentials.
 
@@ -9,7 +10,7 @@ Detect double reset, which can be used to place program in special reconfigurati
 To reference this library by your project, add it as git submodule, using command
 
 ```shell
-git submodule add https://github.com/mdvorak/esp-double-reset.git components/double_reset
+git submodule add https://github.com/NightSky_SK/esp-double-reset.git components/double_reset
 ```
 
 or use it as platformio library
@@ -17,7 +18,7 @@ or use it as platformio library
 ```ini
 [env]
 lib_deps =
-    https://github.com/mdvorak/esp-double-reset.git#v1.0.2
+    https://github.com/NightSky_SK/esp-double-reset.git#v1.0.3
 ```
 
 Note that when used as platformio library, `Kconfig` is not available. Either add [Kconfig](./Kconfig) contents to 
