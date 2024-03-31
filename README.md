@@ -31,6 +31,8 @@ build_flags = -D DOUBLE_RESET_DEFAULT_TIMEOUT=3000
 ### Example
 
 ```c
+#include <esp_log.h>
+#include <nvs_flash.h>
 #include <double_reset.h>
 
 void app_main() 
