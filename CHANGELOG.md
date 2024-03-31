@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/mdvorak/esp-double-reset/compare/v2.0.0...v2.0.1) (2024-03-31)
+
+
+### Bug Fixes
+
+* set component name to double-reset ([181d614](https://github.com/mdvorak/esp-double-reset/commit/181d61401463c936f799adf26e18f1e54f52673e))
+
 ## [2.0.0](https://github.com/mdvorak/esp-double-reset/compare/v1.0.2...v2.0.0) (2024-03-31)
 
 
