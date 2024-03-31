@@ -11,6 +11,7 @@ permissions:
   contents: read
 
 env:
+  COMPONENT_NAME: double-reset
   IDF_COMPONENT_MANAGER: "1"
 
 jobs:
@@ -86,7 +87,7 @@ jobs:
       - name: Upload component to component registry
         uses: espressif/upload-components-ci-action@v1
         with:
-          name: ${{ github.event.repository.name }}
+          name: ${{ env.COMPONENT_NAME }}
           version: ${{ github.ref_name }}
           namespace: ${{ github.repository_owner }}
           api_token: ${{ secrets.ESP_IDF_COMPONENT_API_TOKEN }}
