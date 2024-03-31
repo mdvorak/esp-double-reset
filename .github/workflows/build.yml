@@ -11,7 +11,7 @@ permissions:
   contents: read
 
 env:
-  COMPONENT_NAME: double-reset
+  COMPONENT_NAME: double_reset
   IDF_COMPONENT_MANAGER: "1"
 
 jobs:
