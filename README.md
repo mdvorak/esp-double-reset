@@ -1,23 +1,23 @@
 # double_reset
 
-[![test](https://github.com/mdvorak/esp-double-reset/actions/workflows/test.yml/badge.svg)](https://github.com/mdvorak/esp-double-reset/actions/workflows/test.yml)
+[![build](https://github.com/mdvorak/esp-double-reset/actions/workflows/build.yml/badge.svg)](https://github.com/mdvorak/esp-double-reset/actions/workflows/build.yml)
 
 Detect double reset, which can be used to place program in special reconfiguration mode, like entering Wi-Fi credentials.
 
 ## Usage
 
-To reference this library by your project, add it as git submodule, using command
+To reference this library by your ESP-IDF project, add it as a component
 
 ```shell
-git submodule add https://github.com/mdvorak/esp-double-reset.git components/double_reset
+idf.py add-dependency "mdvorak/double_reset^2.0.1"
 ```
 
-or use it as platformio library
+To use it as a platformio library, add repository to `lib_deps`:
 
 ```ini
 [env]
 lib_deps =
-    https://github.com/mdvorak/esp-double-reset.git#v1.0.2
+    https://github.com/mdvorak/esp-double-reset.git#v2.0.1
 ```
 
 Note that when used as platformio library, `Kconfig` is not available. Either add [Kconfig](./Kconfig) contents to 
